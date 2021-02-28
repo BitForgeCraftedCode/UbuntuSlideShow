@@ -1,0 +1,15 @@
+#!/bin/bash
+
+LOCATION=$(zenity --entry --title="Slide Show" --text="Enter the Location of the jpeg folder" --entry-text="Enter Path Here");
+
+if [ $? -eq 0 ]; then
+   TIME=$(zenity --entry --title="Slide Show" --text="Enter the delay time between slides (at least 5 sec for large files)" --entry-text="enter the # of seconds");
+	if [ $? -eq 0 ]; then
+	   feh $LOCATION --fullscreen --recursive --auto-zoom --slideshow-delay $TIME
+        else
+           echo "Cancelled!"
+        fi
+else
+   echo "Cancelled!"
+fi
+
