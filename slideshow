@@ -1,5 +1,18 @@
 #!/bin/bash
 
+:'
+slideshow requires zenity and feh to be installed
+
+variable=$()  by wrapping the code in $(...) stores zenity output into a variable 
+
+$? is the exit status (return) of the last executed command 
+
+zenity 	returns (0 if user clicked ok)  
+		returns (1 if user cancel or close window)
+		returns (-1 an erro occured)
+		returns (5 The dialog has been closed because the timeout has been reached.)
+
+'
 LOCATION=$(zenity --entry --title="Slide Show" --text="Enter the Location of the jpeg folder" --entry-text="Enter Path Here");
 
 if [ $? -eq 0 ]; then
@@ -13,3 +26,10 @@ else
    echo "Cancelled!"
 fi
 
+if zenity --entry \
+--title="Add new profile" \
+--text="Enter name of new profile:" \
+--entry-text "NewProfile"
+  then echo $?
+  else echo "No name entered"
+fi
