@@ -32,7 +32,7 @@
 COMMENT
 
 #store selected directory in FOLDER var
-FOLDER=$(zenity --file-selection --title="Select the folder with your slide show images" --directory);
+FOLDER=$(zenity --file-selection --title="Select the folder with your slide show images." --directory);
 
 #store exit status of the last zenity command in Return1 var
 FOLDER_SELECTED=$?;
@@ -53,15 +53,21 @@ case $FOLDER_SELECTED in
                 zenity --error --text="An unexpected error has occurred.";;
 esac
 
-# case $RAND_ORD in 
-# 		0)
-# 			#do stuff
-# 			zenity --question --text="Do you want fullscreen mode or adjustable window?";
-#             FULL_SCREEN=$?;
-#             echo "FULL_SCREEN " $FULL_SCREEN;;
-# 		1)
-# 			echo "do other stuff";;
-# 	   -1)
+# TEST_CMD="feh ${FOLDER} --fullscreen --recursive --auto-zoom --slideshow-delay 1";
+# echo $TEST_CMD;
+# $TEST_CMD;
+
+#ask if user wants fullscreen or adjustable window (0 yes 1 no)
+case $RAND_ORD in 
+		0)
+			zenity --question --text="Do you want fullscreen mode or adjustable window? Yes for fullscreen.";
+            FULL_SCREEN=$?;
+            echo "FULL_SCREEN " $FULL_SCREEN;;
+		1)
+			zenity --question --text="Do you want fullscreen mode or adjustable window? Yes for fullscreen.";
+            FULL_SCREEN=$?;
+            echo "FULL_SCREEN " $FULL_SCREEN;;
+	   -1)
 			
-# 			zenity --error --text="An unexpected error has occurred.";;
-# esac
+			zenity --error --text="An unexpected error has occurred.";;
+esac
