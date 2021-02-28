@@ -71,3 +71,19 @@ case $RAND_ORD in
 			
 			zenity --error --text="An unexpected error has occurred.";;
 esac
+
+#ask user to select time (in seconds) for slideshow
+case $FULL_SCREEN in
+		0)
+			TIME=$(zenity --entry --title="Slide Show" --text="Enter the delay time between slides" --entry-text="enter the # of seconds");
+			CHOOSE_TIME=$?;
+			echo "CHOOSE_TIME " $CHOOSE_TIME;
+			echo "TIME " $TIME;;
+		1) 
+			TIME=$(zenity --entry --title="Slide Show" --text="Enter the delay time between slides" --entry-text="enter the # of seconds");
+			CHOOSE_TIME=$?;
+			echo "CHOOSE_TIME " $CHOOSE_TIME;
+			echo "TIME " $TIME;;
+	   -1)
+			zenity --error --text="An unexpected error has occurred.";;
+esac
