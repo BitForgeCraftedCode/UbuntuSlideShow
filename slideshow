@@ -2,39 +2,24 @@
 
 
 # slideshow requires zenity and feh to be installed
-
+# 
 # variable=$()  by wrapping the code in $(...) stores zenity output into a variable 
-
+# 
 # $? is the exit status (return) of the last executed command 
-
+# 
 # zenity 	returns (0 if user clicked ok)  
 # 		returns (1 if user cancel or close window)
 # 		returns (-1 an erro occured)
 # 		returns (5 The dialog has been closed because the timeout has been reached.)
 
 
-# LOCATION=$(zenity --entry --title="Slide Show" --text="Enter the Location of the jpeg folder" --entry-text="Enter Path Here");
 
-# if [ $? -eq 0 ]; then
-#    TIME=$(zenity --entry --title="Slide Show" --text="Enter the delay time between slides (at least 5 sec for large files)" --entry-text="enter the # of seconds");
-# 	if [ $? -eq 0 ]; then
-# 	   feh $LOCATION --fullscreen --recursive --auto-zoom --slideshow-delay $TIME
-#         else
-#            echo "Cancelled!"
-#         fi
-# else
-#    echo "Cancelled!"
-# fi
 
-<<COMMENT
-	this is a
-	multi line comment
-COMMENT
 
 #store selected directory in FOLDER var
 FOLDER=$(zenity --file-selection --title="Select the folder with your slide show images." --directory);
 
-#store exit status of the last zenity command in Return1 var
+#store exit status of the last zenity command in FOLDER_SELECTED var
 FOLDER_SELECTED=$?;
 
 echo "FOLDER_SELECTED " $FOLDER_SELECTED;
