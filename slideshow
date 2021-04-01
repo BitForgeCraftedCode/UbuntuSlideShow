@@ -22,16 +22,12 @@ FOLDER=$(zenity --file-selection --title="Select the folder with your slide show
 #store exit status of the last zenity command in FOLDER_SELECTED var
 FOLDER_SELECTED=$?;
 
-echo "FOLDER_SELECTED " $FOLDER_SELECTED;
-
 #if user selects a folder ask if user wants random mode (0 yes 1 no)
 case $FOLDER_SELECTED in
          0)
-                echo $FOLDER;
                 zenity --question --text="Do you want random order?";
             	RAND_ORD=$?;
-            	FEH_CMD="feh ${FOLDER} --recursive --auto-rotate"
-            	echo "RAND_ORD " $RAND_ORD;;
+            	FEH_CMD="feh ${FOLDER} --recursive --auto-rotate";;
 
          1)
                 zenity --info --text="No folder selected.";;
@@ -44,12 +40,10 @@ case $RAND_ORD in
 		0)
 			zenity --question --text="Do you want fullscreen mode or adjustable window? Yes for fullscreen.";
             FULL_SCREEN=$?;
-            echo "FULL_SCREEN " $FULL_SCREEN;
             FEH_CMD="${FEH_CMD} --randomize";;        
 		1)
 			zenity --question --text="Do you want fullscreen mode or adjustable window? Yes for fullscreen.";
             FULL_SCREEN=$?;
-            echo "FULL_SCREEN " $FULL_SCREEN;
             FEH_CMD="${FEH_CMD} --sort filename --version-sort";;
 	   -1)
 			
@@ -61,14 +55,10 @@ case $FULL_SCREEN in
 		0)
 			TIME=$(zenity --entry --title="Slide Show" --text="Enter the delay time between slides. Default 1 second" --entry-text="1");
 			CHOOSE_TIME=$?;
-			echo "CHOOSE_TIME " $CHOOSE_TIME;
-			echo "TIME " $TIME;
 			FEH_CMD="${FEH_CMD} --fullscreen --auto-zoom";;
 		1) 
 			TIME=$(zenity --entry --title="Slide Show" --text="Enter the delay time between slides. Default 1 second" --entry-text="1");
 			CHOOSE_TIME=$?;
-			echo "CHOOSE_TIME " $CHOOSE_TIME;
-			echo "TIME " $TIME;
 			FEH_CMD="${FEH_CMD} --scale-down --auto-zoom";;
 	   -1)
 			zenity --error --text="An unexpected error has occurred.";;
@@ -80,7 +70,6 @@ case $CHOOSE_TIME in
 		0)
 			FEH_CMD="${FEH_CMD} --slideshow-delay ${TIME} --image-bg black";;
 		1)
-			echo "no time choosen default to 1";
 			FEH_CMD="${FEH_CMD} --slideshow-delay 1 --image-bg black";;
 	   -1) 
 			zenity --error --text="An unexpected error has occurred.";;
