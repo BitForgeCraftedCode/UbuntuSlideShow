@@ -30,7 +30,7 @@ case $FOLDER_SELECTED in
                 echo $FOLDER;
                 zenity --question --text="Do you want random order?";
             	RAND_ORD=$?;
-            	FEH_CMD="feh ${FOLDER} --recursive"
+            	FEH_CMD="feh ${FOLDER} --recursive --auto-rotate"
             	echo "RAND_ORD " $RAND_ORD;;
 
          1)
