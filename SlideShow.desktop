@@ -5,6 +5,6 @@ Comment=Display a SlideShow with FEH image viewer
 Keywords=SlideShow
 
 Exec=/home/andrew/Documents/GitHub/UbuntuSlideShow/slideshow
-Icon=/home/andrew/icons/SimpleBlackIcons/meteo.ico
+Icon=/home/andrew/icons/SimpleBlackIcons/numeric_cam.ico
 Type=Application
 
